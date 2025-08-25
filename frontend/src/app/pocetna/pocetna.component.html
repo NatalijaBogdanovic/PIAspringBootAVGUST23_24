@@ -1,0 +1,12 @@
+<p>pocetna works!</p>
+<input type="text" placeholder="unesi korisnicko ime" [(ngModel)]="username"><br>
+<input type="password" placeholder="unesi lozinku" [(ngModel)]="password"><br>
+tip: <select [(ngModel)]="tip">
+  <option value="igrac">Igrac</option>
+  <option value="admin">Admin</option>
+
+</select><br>
+<button (click)="login()">login</button><br>
+<span style="color: red;">{{poruka}}</span>
+
+

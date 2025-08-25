@@ -1,0 +1,41 @@
+<p>admin works!</p>
+<table>
+  <tr>
+    <th>Naziv</th>
+    <th>Tren pri</th>
+    <th>Min</th>
+    <th>Max</th>
+    <th>Status</th>
+    <th>dugme</th>
+  </tr>
+  @for(i of igre; track i.naziv){
+  <tr [class.green]="i.trenutno_pridruzeni.split(',').length >= i.min" [class.red]="i.trenutno_pridruzeni.split(',').length < i.min">
+    <td>{{i.naziv}}</td>
+    <td>{{i.trenutno_pridruzeni}}</td>
+    <td>{{i.min}}</td>
+    <td>{{i.max}}</td>
+    <td>{{i.status}}</td>
+    @if(i.trenutno_pridruzeni.split(',').length>=i.min && i.status=="otvorena"){
+      <td >
+        <button (click)="zapocni(i.naziv)">Zapocni</button>
+      </td>
+    }
+    @if(i.status == "zapoceta"){
+      <td>
+        <button (click)="zavrsi(i.naziv)">Zavrsi</button>
+      </td>
+
+    }
+  </tr>
+  }
+</table>
+
+<hr>
+<h3>nova igra</h3>
+<input type="text" placeholder="Jedinstven naziv igre" [(ngModel)]="nazivNove"><br>
+<input type="text" placeholder="min br igraca" [(ngModel)]="minBroj"><br>
+<input type="text" placeholder="max br igraca" [(ngModel)]="maxBroj"><br>
+<button (click)="potvrdi()">Potvrdi</button>
+<span class="error">{{poruka}}</span>
+<hr>
+<button (click)="odjaviSe()">odjavi se</button>

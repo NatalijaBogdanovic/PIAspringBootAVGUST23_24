@@ -1,0 +1,27 @@
+<p>igrac works!</p>
+{{igrac.ime}} {{igrac.prezime}} {{igrac.mejl}}
+<table>
+  <tr>
+    <th>Naziv</th>
+    <th>Tren pri</th>
+    <th>Min</th>
+    <th>Max</th>
+    <th>dugme</th>
+  </tr>
+  @for(i of igre; track i.naziv){
+  <tr>
+    <td>{{i.naziv}}</td>
+    <td>{{i.trenutno_pridruzeni}}</td>
+    <td>{{i.min}}</td>
+    <td>{{i.max}}</td>
+    @if(i.max> i.trenutno_pridruzeni.split(',').length ){
+      <td>
+        <button (click)="pridruziSe(i)" [disabled]="i.trenutno_pridruzeni.split(',').includes(igrac.kor_ime)">Pridruzi se</button>
+      </td>
+    }
+  </tr>
+  }
+
+</table>
+
+<button (click)="odjaviSe()">odjavi se</button>
